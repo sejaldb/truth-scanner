@@ -1,113 +1,150 @@
+/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
+/* Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ------------------- Root Colors ------------------- */
 @layer base {
   :root {
-    --background: 225 20% 7%;
-    --foreground: 0 0% 96%;
+    --background: hsl(225, 20%, 7%);
+    --foreground: hsl(0, 0%, 96%);
 
-    --card: 222 18% 14%;
-    --card-foreground: 0 0% 96%;
+    --card: hsl(222, 18%, 14%);
+    --card-foreground: hsl(0, 0%, 96%);
 
-    --popover: 222 18% 14%;
-    --popover-foreground: 0 0% 96%;
+    --popover: hsl(222, 18%, 14%);
+    --popover-foreground: hsl(0, 0%, 96%);
 
-    --primary: 175 90% 42%;
-    --primary-foreground: 0 0% 4%;
+    --primary: hsl(175, 90%, 42%);
+    --primary-foreground: hsl(0, 0%, 4%);
 
-    --secondary: 222 16% 22%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: hsl(222, 16%, 22%);
+    --secondary-foreground: hsl(0, 0%, 90%);
 
-    --muted: 222 14% 19%;
-    --muted-foreground: 220 10% 72%;
+    --muted: hsl(222, 14%, 19%);
+    --muted-foreground: hsl(220, 10%, 72%);
 
-    --accent: 175 90% 42%;
-    --accent-foreground: 0 0% 4%;
+    --accent: hsl(175, 90%, 42%);
+    --accent-foreground: hsl(0, 0%, 4%);
 
-    --destructive: 0 72% 55%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: hsl(0, 72%, 55%);
+    --destructive-foreground: hsl(0, 0%, 100%);
 
-    --safe: 145 70% 45%;
-    --safe-foreground: 0 0% 100%;
+    --safe: hsl(145, 70%, 45%);
+    --safe-foreground: hsl(0, 0%, 100%);
 
-    --warning: 38 92% 55%;
-    --warning-foreground: 0 0% 100%;
+    --warning: hsl(38, 92%, 55%);
+    --warning-foreground: hsl(0, 0%, 100%);
 
-    --border: 222 16% 28%;
-    --input: 222 16% 22%;
-    --ring: 175 90% 42%;
+    --border: hsl(222, 16%, 28%);
+    --input: hsl(222, 16%, 22%);
+    --ring: hsl(175, 90%, 42%);
 
     --radius: 0.75rem;
 
-    --glow-primary: 0 0 20px hsl(175 80% 50% / 0.3);
-    --glow-strong: 0 0 40px hsl(175 80% 50% / 0.4);
+    --glow-primary: 0 0 25px hsl(175, 80%, 50% / 0.5);
+    --glow-strong: 0 0 50px hsl(175, 80%, 50% / 0.6);
 
-    --sidebar-background: 220 18% 8%;
-    --sidebar-foreground: 200 20% 90%;
-    --sidebar-primary: 175 80% 50%;
-    --sidebar-primary-foreground: 220 20% 6%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 200 20% 90%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 175 80% 50%;
+    --sidebar-background: hsl(220, 18%, 8%);
+    --sidebar-foreground: hsl(200, 20%, 90%);
+    --sidebar-primary: hsl(175, 80%, 50%);
+    --sidebar-primary-foreground: hsl(220, 20%, 6%);
+    --sidebar-accent: hsl(220, 15%, 14%);
+    --sidebar-accent-foreground: hsl(200, 20%, 90%);
+    --sidebar-border: hsl(220, 15%, 18%);
+    --sidebar-ring: hsl(175, 80%, 50%);
   }
 }
 
+/* ------------------- Base Styles ------------------- */
 @layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
+    border-color: var(--border);
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
     font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
+
+  img, video, canvas {
+    image-rendering: optimizeSpeed;
+    max-width: 100%;
+    display: block;
+  }
 }
 
+/* ------------------- Components ------------------- */
 @layer components {
+  /* Glass Card */
   .glass-card {
-    @apply bg-card/80 backdrop-blur-xl border border-border rounded-xl;
+    background: rgba(34, 34, 34, 0.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
   }
 
+  /* Glow Borders */
   .glow-border {
+    border: 1px solid var(--primary);
     box-shadow: var(--glow-primary);
-    @apply border border-primary/30;
+    border-radius: var(--radius);
   }
 
+  /* Scan Line */
   .scan-line {
     background: linear-gradient(
       180deg,
       transparent 0%,
-      hsl(175 80% 50% / 0.15) 50%,
+      hsl(175, 80%, 50% / 0.3) 50%,
       transparent 100%
     );
-    animation: scanMove 2s ease-in-out infinite;
+    height: 2px;
+    animation: scanMove 2s linear infinite;
   }
 
+  /* Pulse Glow for scanning elements */
   .pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite;
   }
 
+  /* Rotating scanning ring */
   .scanning-ring {
     animation: scanRing 1.5s linear infinite;
   }
+
+  /* Background Grid */
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(175, 80%, 50% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(175, 80%, 50% / 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridPulse 4s ease-in-out infinite;
+  }
 }
 
+/* ------------------- Animations ------------------- */
 @keyframes scanMove {
-  0%, 100% { transform: translateY(-100%); }
-  50% { transform: translateY(100%); }
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { transform: translateY(100%); opacity: 0.6; }
+  100% { transform: translateY(200%); opacity: 0; }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 10px hsl(175 80% 50% / 0.2); }
-  50% { box-shadow: 0 0 30px hsl(175 80% 50% / 0.5); }
+  0%, 100% { box-shadow: 0 0 15px hsl(175, 80%, 50% / 0.3); }
+  50% { box-shadow: 0 0 35px hsl(175, 80%, 50% / 0.6); }
 }
 
 @keyframes scanRing {
@@ -118,12 +155,4 @@
 @keyframes gridPulse {
   0%, 100% { opacity: 0.03; }
   50% { opacity: 0.08; }
-}
-
-.bg-grid {
-  background-image: 
-    linear-gradient(hsl(175 80% 50% / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(175 80% 50% / 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridPulse 4s ease-in-out infinite;
 }
