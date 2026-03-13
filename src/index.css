@@ -6,26 +6,26 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 200 20% 90%;
+    --background: 225 20% 7%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 200 20% 90%;
+    --card: 222 18% 14%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 200 20% 90%;
+    --popover: 222 18% 14%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 175 80% 50%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 175 90% 42%;
+    --primary-foreground: 0 0% 4%;
 
-    --secondary: 220 15% 16%;
-    --secondary-foreground: 200 20% 80%;
+    --secondary: 222 16% 22%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 15% 14%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 222 14% 19%;
+    --muted-foreground: 220 10% 72%;
 
-    --accent: 175 80% 50%;
-    --accent-foreground: 220 20% 6%;
+    --accent: 175 90% 42%;
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
@@ -36,9 +36,9 @@
     --warning: 38 92% 55%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 220 15% 18%;
-    --input: 220 15% 16%;
-    --ring: 175 80% 50%;
+    --border: 222 16% 28%;
+    --input: 222 16% 22%;
+    --ring: 175 90% 42%;
 
     --radius: 0.75rem;
 
@@ -73,7 +73,7 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+    @apply bg-card/80 backdrop-blur-xl border border-border rounded-xl;
   }
 
   .glow-border {
