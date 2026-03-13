@@ -139,7 +139,7 @@ const Index = () => {
                   <UploadScanner onAnalyze={handleFileAnalyze} isScanning={isScanning} />
                 )}
                 {mode === "camera" && (
-                  <CameraScanner onAnalyze={handleBlobAnalyze} isScanning={isScanning} />
+                  <CameraScanner onResult={(r) => { setResult(r); }} isScanning={isScanning} setIsScanning={setIsScanning} />
                 )}
                 {mode === "url" && (
                   <UrlScanner onAnalyze={handleUrlAnalyze} isScanning={isScanning} />
